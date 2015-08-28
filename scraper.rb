@@ -6,6 +6,9 @@ require 'json'
 FY_RANGE = 10..15
 IS_BOLDED_LABEL = -> (cur) { !!cur.first_element_child }
 PRIOR_FUNDING_TABLE_COLS = ['Allotments', 'Spent', 'Enc/ID-Adv', 'Pre-Enc', 'Balance']
+MILESTONES = [:environmental_approvals, :design_start, :design_complete,
+              :construction_start, :construction_complete, :closeout]
+IMAGES_DIR = 'images/'
 OUTPUT_FILE = 'data.json'
 
 def scrape_title(page)
@@ -23,7 +26,10 @@ def scrape_image(page)
     cur = page.at("image")
 
     if cur then
-        return cur['src'].split('/')[-1]
+        filename = cur['src'].split('/')[-1]
+        if File.exist? IMAGES_DIR + filename then
+            return filename
+        end
     end
 end
 
@@ -103,6 +109,41 @@ def scrape_funding_table(page, type, fy)
     return rows
 end
 
+def scrape_milestones_table(page)
+    cur = page.at("b:contains('Milestone Data')")
+
+    if cur then
+        milestones = {}
+        cur = cur.parent.next_element
+        div_x = cur['left'].to_i + cur['width'].to_i
+
+        cur = cur.next_element.next_element
+
+        for milestone in MILESTONES do
+            dates = {}
+
+            row_y = cur['top'].to_i
+            cur = cur.next_element
+
+            while (cur['top'].to_i - row_y).abs < 5 do
+                if cur.text != ' ' then
+                    if cur['left'].to_i < div_x then
+                        dates[:projected] = cur.text.strip
+                    else
+                        dates[:actual] = cur.text.strip
+                    end
+                end
+
+                cur = cur.next_element
+            end
+
+            milestones[milestone] = dates
+        end
+
+        return milestones
+    end
+end
+
 projects = []
 
 for fy in FY_RANGE do
@@ -118,6 +159,7 @@ for fy in FY_RANGE do
         data[:cip_fy] = fy
 
         data[:title] = scrape_title(page)
+        puts data[:title]
         data[:image] = scrape_image(page)
         data[:agency] = scrape_field(page, 'Agency')
         data[:implementing_agency] = scrape_field(page, 'Implementing Agency')
@@ -132,6 +174,7 @@ for fy in FY_RANGE do
         data[:progress_assessment] = scrape_paragraph(page, 'Progress Assessment')
         data[:funding_by_phase] = scrape_funding_table(page, 'Phase', fy)
         data[:funding_by_source] = scrape_funding_table(page, 'Source', fy)
+        data[:milestones] = scrape_milestones_table(page)
         data[:related_projects] = scrape_paragraph_with_end_test(page, 'Related Projects') { |cur|
             cur.text.include? '(Dollars in Thousands)'
         }
