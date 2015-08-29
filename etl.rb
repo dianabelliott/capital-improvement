@@ -9,9 +9,9 @@ IS_BOLDED_LABEL = -> (cur) { !!cur.first_element_child }
 PRIOR_FUNDING_TABLE_COLS = ['Allotments', 'Spent', 'Enc/ID-Adv', 'Pre-Enc', 'Balance']
 MILESTONES = [:environmental_approvals, :design_start, :design_complete,
               :construction_start, :construction_complete, :closeout]
-IMAGES_DIR = 'images/'
-DATA_OUTPUT_FILE = 'data.json'
-PROJECT_OUTPUT_DIR = 'app/data/'
+IMAGES_DIR = 'app/images/project_images/'
+DATA_OUTPUT_FILE = 'app/data/data.json'
+PROJECT_OUTPUT_DIR = 'app/data/projects/'
 SUMMARY_OUTPUT_FILE = 'app/data/summary.json'
 
 def scrape_title(page)
