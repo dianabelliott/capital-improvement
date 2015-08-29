@@ -1,11 +1,161 @@
 // bower:scss
 // endbower
 
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0px;
+}
 
+body {
+    background: #F5F2F1;
+    color: #313130;
+    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    padding-top: 10px;
+}
+
+a {
+    color: #286080;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    padding: 0 10px;
+
+    > div {
+        float: left;
+        padding: 10px;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+    }
+    > div.row { padding: 0; }
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+header, main, footer {
+    > div {
+        max-width: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
+.mobile-col-2 {
+    @media screen and (max-width: 767px) {
+        width: 50% !important;
+    }
+    @media screen and (max-width: 479px) {
+        width: 100% !important;
+    }
+}
+
+.card {
+    background: #fff;
+    box-shadow: 1px 1px 3px #918E8C;
+    overflow: hidden;
+    padding: 20px
+}
+
+.img-card {
+    line-height: 0;
+    padding: 0;
+}
+
+#banner {
+    img { transition: margin-top 500ms; }
+    &.collapsed img { margin-top: -12.6%; }
+}
+
+.project-snapshot {
+    width: 20%;
+    @extend .mobile-col-2;
+}
+
+.project-status {
+    span {
+        display: block;
+        line-height: 17px;
+        padding-left: 24px;
+    }
+    .is-active {
+        font-size: 17px;
+        font-weight: 700;
+        padding-top: 20px;
+        color: #1A7764;
+        position: relative;
+        &:before {
+            display: block;
+            position: absolute;
+            width: 20px; height: 20px;
+            left: -1px; top: 19px;
+            border-radius: 22px;
+            background: #1A7764;
+            content: "";
+        }
+        &.inactive {
+            color: #822A15;
+            &:before { background: #822A15; }
+        }
+    }
+    .last-updated {
+        font-size: 13px;
+        color: #545352;
+    }
+}
+
+.project-map {
+    width: 30%;
+    @extend .mobile-col-2;
+    position: relative;
+    @media screen and (min-width: 768px) { left: 50%; }
+    > div.card {
+        position: relative;
+        &:after {
+            padding-top: 80.137%;
+            display: block;
+            content: "";
+        }
+        div.map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    }
+}
+
+.project-summary {
+    width: 50%;
+    position: relative;
+    @media screen and (min-width: 768px) { right: 30%; }
+}
+
+.project-description {
+    width: 60%;
+}
+
+.project-milestones {
+    width: 40%;
+}
 
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
