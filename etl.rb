@@ -22,6 +22,8 @@ def scrape_title(page)
         title = cur.previous_element.text + title
     end
 
+    title = /(?:[A-Z,\d]+-){2}(.*)/.match(title)[1]
+
     return title
 end
 
@@ -131,9 +133,9 @@ def scrape_milestones_table(page)
             while (cur['top'].to_i - row_y).abs < 5 do
                 if cur.text != ' ' then
                     if cur['left'].to_i < div_x then
-                        dates[:projected] = cur.text.strip
+                        dates[:projected] = cur.text.strip.gsub('/20', '/')
                     else
-                        dates[:actual] = cur.text.strip
+                        dates[:actual] = cur.text.strip.gsub('/20', '/')
                     end
                 end
 
@@ -178,7 +180,8 @@ for fy in FY_RANGE do
         data[:funding_by_source] = scrape_funding_table(page, 'Source', fy)
         data[:milestones] = scrape_milestones_table(page)
         data[:related_projects] = scrape_paragraph_with_end_test(page, 'Related Projects') { |cur|
-            cur.text.include? '(Dollars in Thousands)'
+            cur.text.include?('(Dollars in Thousands)') ||
+            cur.text.include?('Milestone Data')
         }
 
         if fy == 10 then
@@ -304,7 +307,7 @@ projects.each do |project_no, project|
                 end
 
                 allotted = li[:prior_funding]['Allotments']
-                spent = li[:prior_funding]['Spent']
+                spent = li[:prior_funding]['Allotments'] - li[:prior_funding]['Balance']
                 proposed = li[:proposed_funding]["FY 20#{fy}"]
 
                 funds[name]["FY 20#{fy}"] = {
@@ -321,7 +324,7 @@ projects.each do |project_no, project|
                         funds[name]["FY 20#{yy}"] = {
                             :allotted => allotted,
                             :spent => spent,
-                            :new => proposed
+                            :proposed => proposed
                         }
                     end
                 end
@@ -347,6 +350,14 @@ projects.each do |project_no, project|
 
     project[:cumulative_funding][:total_funding] = total_cum_funding
 
+    unless project[:est_cost] then
+        cost = 0
+        total_cum_funding.each do |fy, funds|
+            cost = [cost, funds[:allotted] + funds[:proposed]].max
+        end
+        project[:est_cost] = cost
+    end
+
     project.delete(:cip_tables)
 
     File.open("#{PROJECT_OUTPUT_DIR}#{project_no}.json", 'w') do |fo|
@@ -368,7 +379,9 @@ summary = projects.values.map do |project|
         :active => project[:active],
         :first_year => project[:first_year],
         :last_year => project[:last_year],
-        :cumulative_funding => project[:cumulative_funding][:total_funding]
+        :cumulative_funding => {
+            :total_funding => project[:cumulative_funding][:total_funding]
+        }
     }
 end
 
