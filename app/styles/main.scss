@@ -20,6 +20,8 @@ body {
     padding-top: 10px;
 }
 
+input { font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
 h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.1em; }
 
 h2 { font-size: 28px; }
@@ -151,8 +153,8 @@ div.search {
     z-index: 10;
     .search-bar {
         height: 33px;
-        width: 105px;
-        padding: 0 5px 0 33px;
+        width: 99px;
+        padding: 0 5px 0 32px;
         border: 2px solid #286080;
         outline: 0;
         background: #286080;
@@ -174,7 +176,7 @@ div.search {
     }
     .search-icon {
         position: absolute;
-        left: 21px;
+        left: 22px;
         top: 16px;
 
         &:after {
