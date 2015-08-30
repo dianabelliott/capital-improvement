@@ -1,5 +1,8 @@
 // bower:scss
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
+
+@import 'vendor/chosen.css';
 
 *, *:after, *:before {
     -webkit-box-sizing: border-box;
@@ -70,7 +73,6 @@ header, main, footer {
     > div {
         max-width: 1000px;
         margin: 0 auto;
-        overflow: hidden;
     }
 }
 
@@ -95,9 +97,55 @@ header, main, footer {
     padding: 0;
 }
 
+input[type="checkbox"] {
+    @extend .visually-hidden;
+
+    & + label:before {
+        content: "\f00c";
+        width: 17px; height: 17px;
+        background: #B9B7B5;
+        color: #B9B7B5;
+        display: inline-block;
+        border-radius: 3px;
+        border: 2px solid #B9B7B5;
+        position: relative;
+        font-family: FontAwesome;
+        text-align: center;
+        margin-right: 3px;
+        line-height: 15px;
+    }
+    &:focus + label:before {
+        border-color: #286080;
+    }
+    & + label:hover:before {
+        color: #A9A7A5;
+    }
+    &:checked + label:before {
+        color: #286080;
+    }
+}
+
+label { white-space: nowrap; }
+
 #banner {
     img { transition: margin-top 500ms; }
     &.collapsed img { margin-top: -12.6%; }
+}
+
+.control-view {
+    font-size: 13px;
+    color: #626160;
+}
+
+.filters {
+    > * {
+        margin-right: 12px;
+        margin-bottom: 7px;
+    }
+}
+
+div.search {
+    float: right;
 }
 
 .project-snapshot {
@@ -223,4 +271,12 @@ header, main, footer {
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
+}
+
+.visually-hidden {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
 }

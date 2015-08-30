@@ -37,90 +37,114 @@
       </div>
     </header>
     <main>
+      <div class="view control-view">
+        <div class="row">
+          <div class="filters">
+            <select class="agency-filter" name="agency" data-placeholder="Filter by agency">
+              <option value></option>
+              <option value="DEPARTMENT OF REAL ESTATE SERVICES (AM0)">DEPARTMENT OF REAL ESTATE SERVICES (AM0)</option>
+              <option value="DEPARTMENT OF GENERAL SERVICES (AM0)">DEPARTMENT OF GENERAL SERVICES (AM0)</option>
+              <option value="OFFICE OF CHIEF FINANCIAL OFFICER (AT0)">OFFICE OF CHIEF FINANCIAL OFFICER (AT0)</option>
+              <option value="DC PUBLIC LIBRARY (CE0)">DC PUBLIC LIBRARY (CE0)</option>
+              <option value="DEPT. OF CONSUMER AND REGULATORY AFFAIRS (CR0)">DEPT. OF CONSUMER AND REGULATORY AFFAIRS (CR0)</option>
+            </select>
+            <select class="ward-filter" name="ward" data-placeholder="Filter by ward">
+              <option value></option>
+              <option value="Ward 1">Ward 1</option>
+              <option value="Ward 2">Ward 2</option>
+              <option value="Ward 3">Ward 3</option>
+              <option value="Ward 4">Ward 4</option>
+              <option value="Ward 5">Ward 5</option>
+              <option value="Ward 6">Ward 6</option>
+              <option value="Ward 7">Ward 7</option>
+              <option value="Ward 8">Ward 8</option>
+            </select>
+            <input type="checkbox" id="hide-inactive" name="Hide inactive projects" value="hide-inactive" checked /> <label for="hide-inactive">Hide inactive projects</label>
+          </div>
+          <div class="search">
+            <input class="search-bar" type="text" name="search" placeholder="Search" />
+          </div>
+        </div>
+      </div>
       <div class="view table-view">
-        <div class="controls"></div>
-        <div class="content"></div>
       </div>
       <div class="view detail-view">
-        <div class="controls"></div>
-        <div class="content">
-          <div class="row">
-            <div class="project-title">
-              <h2>CONSOLIDATED LABORATORY FACILITY</h2>
+        <div class="row">
+          <div class="project-title">
+            <h2>CONSOLIDATED LABORATORY FACILITY</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="project-snapshot">
+            <div class="project-photo card img-card">
+              <img src="images/project_images/fy11-40_1.jpg" alt="" />
+            </div>
+            <div class="project-status">
+              <span class="is-active inactive">Inactive</span>
+              <span class="last-updated">Last updated: FY11</span>
             </div>
           </div>
-          <div class="row">
-            <div class="project-snapshot">
-              <div class="project-photo card img-card">
-                <img src="images/project_images/fy11-40_1.jpg" alt="" />
-              </div>
-              <div class="project-status">
-                <span class="is-active inactive">Inactive</span>
-                <span class="last-updated">Last updated: FY11</span>
-              </div>
-            </div>
-            <div class="project-map">
-              <div class="project-photo card img-card">
-                <div class="map">
-                </div>
-              </div>
-            </div>
-            <div class="project-summary">
-              <div class="card">
-                <table>
-                  <tbody>
-                    <tr><th>Agency:</th><td>DEPARTMENT OF REAL ESTATE SERVICES</td></tr>
-                    <tr><th>Implementing Agency:</th><td>DEPARTMENT OF REAL ESTATE SERVICES</td></tr>
-                    <tr><th>Ward:</th><td>WARD 2</td></tr>
-                    <tr><th>Location:</th><td>415 4TH STREET SW</td></tr>
-                    <tr><th>Facility:</th><td>CONSOLIDATED LABORATORY</td></tr>
-                    <tr><th>Status:</th><td>Contract awarded</td></tr>
-                    <tr><th>Useful Life:</th><td>30</td></tr>
-                    <tr><th>Est. Full Funding Cost:</th><td>$210,064,000</td></tr>
-                  </tbody>
-                </table>
+          <div class="project-map">
+            <div class="project-photo card img-card">
+              <div class="map">
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="project-description collapsed">
-              <div class="card">
-                <h3>Description</h3>
-                <p>This project will design and construct a state-of-the-art forensic laboratory at 415 4th Street SW. It will be a full-service crime laboratory, medical examiner/morgue facility, and public health laboratory that meets all applicable national standards. The Consolidated Laboratory facility will improve the quality and efficiency of these services by consolidating the operations of the following agencies and divisions into one facility: District of Columbia Public Health Laboratory (DOH); Office of the Chief Medical Examiner (OCME); and Metropolitan Police Department (MPD) Forensic Laboratory. This consolidation will result in better coordination of services for public safety and a reduction on the current backlog of crime investigations. The scope of work for this project includes, but is not limited to the following: development of architectural and engineering scope of work; demolition of existing MPD First District (MPD 1-D); construction; facility commissioning; fit-up relocation; laboratory equipment including new Lab IT Solution (LIM); and occupancy of the facility.</p>
-                <h3>Justification</h3>
-                <p>All three agencies involved with the project are currently working inside aging facilities that do not meet today’s scientific standards. In addition, the District wants to expand its capabilities in supporting public safety/public health sectors by conducting new scientific investigations that are not being performed today. This project will help minimize the backlog of open criminal cases to serve justice. The project is a priority for the Mayor and Council.</p>
-                <h3>Progress Assessment</h3>
-                <p>The project is progressing as planned on schedule and is currently under construction.</p>
-                <h3>Related Projects</h3>
-                <p>former Bowen Elementary School renovation into new MPD 1-D headquarters; MPD Evidence Warehouse. MPD 1st District was moved to Bowen School on 4/7/2009.</p>
-              </div>
-            </div>
-            <div class="project-milestones">
-              <div class="card">
-                <h3>Milestones</h3>
-                <table>
-                  <thead>
-                    <tr><th></th><th>Projected</th><th>Actual</th>
-                  </thead>
-                  <tbody>
-                    <tr><th>Environmental Approvals</th><td></td><td></td></tr>
-                    <tr><th>Design Start</th><td></td><td>08/01/06</td></tr>
-                    <tr><th>Design Complete</th><td></td><td></td></tr>
-                    <tr><th>Construction Start</th><td>02/28/06</td><td>02/28/06</td></tr>
-                    <tr><th>Construction Complete</th><td>08/31/12</td><td></td></tr>
-                    <tr><th>Closeout</th><td>11/30/12</td><td></td></tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="project-summary">
+            <div class="card">
+              <table>
+                <tbody>
+                  <tr><th>Agency:</th><td>DEPARTMENT OF REAL ESTATE SERVICES</td></tr>
+                  <tr><th>Implementing Agency:</th><td>DEPARTMENT OF REAL ESTATE SERVICES</td></tr>
+                  <tr><th>Ward:</th><td>WARD 2</td></tr>
+                  <tr><th>Location:</th><td>415 4TH STREET SW</td></tr>
+                  <tr><th>Facility:</th><td>CONSOLIDATED LABORATORY</td></tr>
+                  <tr><th>Status:</th><td>Contract awarded</td></tr>
+                  <tr><th>Useful Life:</th><td>30</td></tr>
+                  <tr><th>Est. Full Funding Cost:</th><td>$210,064,000</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="row">
-            <div class="funding-over-time">
-              <h3>Funding Over Time</h3>
+        </div>
+        <div class="row">
+          <div class="project-description collapsed">
+            <div class="card">
+              <h3>Description</h3>
+              <p>This project will design and construct a state-of-the-art forensic laboratory at 415 4th Street SW. It will be a full-service crime laboratory, medical examiner/morgue facility, and public health laboratory that meets all applicable national standards. The Consolidated Laboratory facility will improve the quality and efficiency of these services by consolidating the operations of the following agencies and divisions into one facility: District of Columbia Public Health Laboratory (DOH); Office of the Chief Medical Examiner (OCME); and Metropolitan Police Department (MPD) Forensic Laboratory. This consolidation will result in better coordination of services for public safety and a reduction on the current backlog of crime investigations. The scope of work for this project includes, but is not limited to the following: development of architectural and engineering scope of work; demolition of existing MPD First District (MPD 1-D); construction; facility commissioning; fit-up relocation; laboratory equipment including new Lab IT Solution (LIM); and occupancy of the facility.</p>
+              <h3>Justification</h3>
+              <p>All three agencies involved with the project are currently working inside aging facilities that do not meet today’s scientific standards. In addition, the District wants to expand its capabilities in supporting public safety/public health sectors by conducting new scientific investigations that are not being performed today. This project will help minimize the backlog of open criminal cases to serve justice. The project is a priority for the Mayor and Council.</p>
+              <h3>Progress Assessment</h3>
+              <p>The project is progressing as planned on schedule and is currently under construction.</p>
+              <h3>Related Projects</h3>
+              <p>former Bowen Elementary School renovation into new MPD 1-D headquarters; MPD Evidence Warehouse. MPD 1st District was moved to Bowen School on 4/7/2009.</p>
             </div>
-            <div class="historical-plans">
-              <h3>Historical Plans</h3>
+          </div>
+          <div class="project-milestones">
+            <div class="card">
+              <h3>Milestones</h3>
+              <table>
+                <thead>
+                  <tr><th></th><th>Projected</th><th>Actual</th>
+                </thead>
+                <tbody>
+                  <tr><th>Environmental Approvals</th><td></td><td></td></tr>
+                  <tr><th>Design Start</th><td></td><td>08/01/06</td></tr>
+                  <tr><th>Design Complete</th><td></td><td></td></tr>
+                  <tr><th>Construction Start</th><td>02/28/06</td><td>02/28/06</td></tr>
+                  <tr><th>Construction Complete</th><td>08/31/12</td><td></td></tr>
+                  <tr><th>Closeout</th><td>11/30/12</td><td></td></tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="funding-over-time">
+            <h3>Funding Over Time</h3>
+          </div>
+          <div class="historical-plans">
+            <h3>Historical Plans</h3>
           </div>
         </div>
       </div>
@@ -133,6 +157,7 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/chosen/chosen.jquery.min.js"></script>
     <script src="../bower_components/d3/d3.js"></script>
     <script src="../bower_components/lodash/lodash.js"></script>
     <!-- endbower -->
