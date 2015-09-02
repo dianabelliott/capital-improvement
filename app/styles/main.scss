@@ -151,6 +151,17 @@ div.search {
 .search {
     position: relative;
     z-index: 10;
+
+    &.text-entered .search-bar {
+        background: #F5F2F1;
+        color: #313130;
+        width: 280px;
+
+        + .search-icon:after {
+            color: #286080;
+        }
+    }
+
     .search-bar {
         height: 33px;
         width: 99px;
@@ -174,6 +185,7 @@ div.search {
             }
         }
     }
+
     .search-icon {
         position: absolute;
         left: 22px;
@@ -186,6 +198,29 @@ div.search {
             color: #fff;
             left: 0px;
         }
+    }
+
+    .clear-search {
+        display: none;
+        position: absolute;
+        right: 22px;
+        top: 16px;
+        cursor: pointer;
+
+        &:after {
+            font-family: FontAwesome;
+            font-size: 16px;
+            content: "\f00d";
+            color: #828180;
+            left: 0px;
+        }
+
+        &:hover:after {
+            color: #286080;
+        }
+    }
+    &.text-entered .clear-search {
+        display: block;
     }
 }
 

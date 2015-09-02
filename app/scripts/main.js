@@ -28,6 +28,17 @@
             'width': '140px',
             'allow_single_deselect': true
         });
+        $(el).find('.search input').change(function (e) {
+            var target = $(e.target);
+            if (target.val() !== '') {
+                target.parent().addClass('text-entered');
+            } else {
+                target.parent().removeClass('text-entered');
+            }
+        });
+        $(el).find('.search .clear-search').click(function (e) {
+            $(e.target).siblings('.search .search-bar').val('').change();
+        });
     };
 
 }());
